@@ -8,16 +8,19 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var ImageCell: UIImageView!
+    @IBOutlet weak var ImageLabel: UILabel!
+    var video: Video!{
+        didSet{
+            updateUI()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateUI(){
+        ImageCell.image = UIImage(named: video.thumbnailFileName)
+        ImageCell.layer.cornerRadius = 8.0
+        ImageCell.layer.masksToBounds = true
+        ImageLabel.text = video.AuthorName
+        
     }
-
 }
